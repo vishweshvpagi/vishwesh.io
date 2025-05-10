@@ -1,0 +1,1327 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Your Name - Portfolio</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <!-- Google Fonts (Optional - choose your own) -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* General Styles */
+      body {
+        font-family: "Open Sans", sans-serif;
+        line-height: 1.6;
+        color: #333;
+        padding-top: 56px; /* Adjust if navbar height changes */
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 700;
+      }
+
+      .page-section {
+        padding: 6rem 0;
+      }
+
+      .page-section-heading {
+        font-size: 2.25rem;
+        line-height: 2rem;
+        color: #2c3e50; /* Dark Blue/Grey */
+      }
+
+      /* Navigation Bar */
+      #mainNav {
+        transition: padding-top 0.3s ease-in-out,
+          padding-bottom 0.3s ease-in-out, background-color 0.3s ease-in-out;
+      }
+      #mainNav .navbar-brand {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 700;
+        color: #1abc9c; /* Teal Accent */
+      }
+
+      #mainNav .nav-link {
+        font-weight: 600;
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      #mainNav .nav-link:hover,
+      #mainNav .nav-link.active {
+        color: #1abc9c; /* Teal Accent */
+      }
+
+      #mainNav .nav-link i {
+        margin-right: 0.5rem;
+      }
+
+      .navbar-shrink {
+        padding-top: 0.5rem !important;
+        padding-bottom: 0.5rem !important;
+        background-color: #212529 !important; /* Darker background when shrunk */
+      }
+
+      /* Home Section */
+      .home-section {
+        padding-top: calc(6rem + 72px); /* Extra padding for navbar */
+        padding-bottom: 6rem;
+        background-color: #2c3e50; /* Dark Blue/Grey */
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .masthead-avatar {
+        width: 15rem;
+        height: 15rem;
+        border-radius: 50%;
+        border: 0.5rem solid rgba(255, 255, 255, 0.2);
+        object-fit: cover; /* Ensures the image covers the area without distortion */
+      }
+
+      .masthead-heading {
+        font-size: 3rem;
+        line-height: 3rem;
+      }
+
+      .masthead-subheading {
+        font-size: 1.25rem;
+      }
+
+      /* Animated Name - Simple Pulse */
+      .animated-name {
+        animation: pulseName 2s infinite ease-in-out alternate;
+      }
+      @keyframes pulseName {
+        from {
+          transform: scale(1);
+        }
+        to {
+          transform: scale(1.05);
+        }
+      }
+
+      /* Divider Custom (from Start Bootstrap themes) */
+      .divider-custom {
+        margin: 1.25rem 0 1.5rem;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .divider-custom .divider-custom-line {
+        width: 100%;
+        max-width: 7rem;
+        height: 0.25rem;
+        background-color: #fff;
+        border-radius: 1rem;
+        border-color: #fff !important;
+      }
+      .divider-custom .divider-custom-line:first-child {
+        margin-right: 1rem;
+      }
+      .divider-custom .divider-custom-line:last-child {
+        margin-left: 1rem;
+      }
+      .divider-custom .divider-custom-icon {
+        color: #fff !important;
+        font-size: 2rem;
+      }
+      .divider-custom.divider-light .divider-custom-line {
+        background-color: #fff;
+      }
+      .divider-custom.divider-light .divider-custom-icon {
+        color: #fff !important;
+      }
+
+      /* Skills Section */
+      #skills .progress {
+        height: 1.2rem;
+        margin-bottom: 0.5rem;
+        font-size: 0.8rem;
+        background-color: #e9ecef; /* Light grey for progress bar background */
+      }
+      #skills .progress-bar {
+        font-weight: bold;
+        transition: width 1s ease-in-out; /* Animate progress bar fill */
+      }
+      #skills .badge {
+        font-size: 0.9rem;
+      }
+
+      /* Projects Section */
+      .project-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border: none;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+      .project-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+      }
+      .project-card img {
+        aspect-ratio: 16 / 9; /* Common aspect ratio for project images */
+        object-fit: cover;
+      }
+      .project-card .card-body {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      /* Education Section */
+      #education .card {
+        border-left: 5px solid #1abc9c; /* Teal Accent */
+      }
+
+      /* Contact Section */
+      .social-icons .social-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        height: 3.5rem;
+        width: 3.5rem;
+        background-color: #2c3e50; /* Dark Blue/Grey */
+        color: #fff;
+        border-radius: 100%;
+        font-size: 1.5rem;
+        margin-right: 1rem;
+        transition: background-color 0.3s ease;
+      }
+      .social-icons .social-icon:last-child {
+        margin-right: 0;
+      }
+      .social-icons .social-icon:hover {
+        background-color: #1abc9c; /* Teal Accent */
+      }
+      .invalid-feedback {
+        /* Ensure Bootstrap's invalid feedback is visible */
+        display: none; /* Hidden by default, JS will show it */
+        width: 100%;
+        margin-top: 0.25rem;
+        font-size: 0.875em;
+        color: #dc3545; /* Bootstrap's danger color */
+      }
+      .form-control.is-invalid ~ .invalid-feedback {
+        display: block;
+      }
+
+      /* Footer */
+      .footer {
+        padding: 2rem 0;
+        background-color: #2c3e50; /* Dark Blue/Grey */
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      /* Smooth Scrolling */
+      html {
+        scroll-behavior: smooth;
+      }
+
+      /* Back to Top Button */
+      #backToTopBtn {
+        display: none; /* Hidden by default */
+        position: fixed;
+        bottom: 20px;
+        right: 30px;
+        z-index: 99;
+        border: none;
+        outline: none;
+        background-color: #1abc9c; /* Teal Accent */
+        color: white;
+        cursor: pointer;
+        padding: 10px 15px;
+        border-radius: 50%;
+        font-size: 18px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transition: background-color 0.3s, opacity 0.3s, visibility 0.3s;
+      }
+
+      #backToTopBtn:hover {
+        background-color: #16a085; /* Darker Teal */
+      }
+
+      /* Generic Scroll Animation - Initial State */
+      .animate-on-scroll {
+        opacity: 0;
+        transform: translateY(30px); /* Or translateX, scale, etc. */
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        will-change: opacity, transform; /* Performance hint */
+      }
+
+      /* Generic Scroll Animation - Visible State (triggered by JS) */
+      .animate-on-scroll.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Lazy Loading Images Styling (Optional) */
+      img.lazy {
+        opacity: 0; /* Start invisible */
+        transition: opacity 0.5s ease-in-out;
+      }
+
+      img.lazy-loaded {
+        opacity: 1; /* Fade in when loaded */
+      }
+
+      /* Responsive Adjustments */
+      @media (max-width: 991.98px) {
+        .home-section {
+          padding-top: calc(4rem + 56px);
+          padding-bottom: 4rem;
+        }
+        .masthead-avatar {
+          width: 10rem;
+          height: 10rem;
+        }
+        .masthead-heading {
+          font-size: 2.5rem;
+        }
+        .page-section-heading {
+          font-size: 2rem;
+        }
+      }
+      @media (max-width: 767.98px) {
+        #mainNav .navbar-nav {
+          text-align: center; /* Center nav items in collapsed menu */
+        }
+        #mainNav .nav-item {
+          padding: 0.5rem 0;
+        }
+      }
+    </style>
+  </head>
+  <body data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="75">
+    <!-- Adjust data-bs-offset as needed -->
+
+    <!-- Navigation Bar -->
+    <nav
+      class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top"
+      id="mainNav"
+    >
+      <div class="container">
+        <a class="navbar-brand" href="#home">Vishwesh</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarResponsive"
+          aria-controls="navbarResponsive"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#home"
+                ><i class="fas fa-home"></i> Home</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#about"
+                ><i class="fas fa-user"></i> About Me</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#skills"
+                ><i class="fas fa-cogs"></i> Skills</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#projects"
+                ><i class="fas fa-project-diagram"></i> Projects</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#education"
+                ><i class="fas fa-graduation-cap"></i> Education</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#contact"
+                ><i class="fas fa-envelope"></i> Contact</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Home Section -->
+    <header class="home-section text-white text-center" id="home">
+      <div class="container d-flex align-items-center flex-column">
+        <img class="masthead-avatar mb-5" src="" alt=" Avatar" />
+        <!-- UPDATE PATH IF NEEDED -->
+        <h1 class="masthead-heading mb-0 animated-name">Vishwesh</h1>
+        <div class="divider-custom divider-light">
+          <div class="divider-custom-line"></div>
+          <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+          <div class="divider-custom-line"></div>
+        </div>
+        <p class="masthead-subheading font-weight-light mb-0">
+          <span id="typed-text"></span>
+          <!-- For animated text -->
+        </p>
+        <p class="mt-4 lead">
+          Aspiring to innovate and solve complex problems through technology.
+        </p>
+      </div>
+    </header>
+
+    <!-- About Me Section -->
+    <section class="page-section bg-light" id="about">
+      <div class="container">
+        <h2
+          class="page-section-heading text-center text-uppercase mb-5 animate-on-scroll"
+        >
+          About Me
+        </h2>
+        <div class="row">
+          <div class="col-lg-8 mx-auto animate-on-scroll">
+            <p class="lead">
+              Hello! I'm Vishwesh, a passionate and driven Computer Science
+              student at C M R University. Currently, I'm focusing on Full-Stack
+              Development, Machine Learning and Data Science. I have a strong
+              foundation in Python, HTML, CSS, and JavaScript, and I'm
+              constantly expanding my skill set to stay up-to-date with the
+              latest trends and technologies.
+            </p>
+            <p class="lead">
+              I thrive on challenges and am constantly seeking opportunities to
+              learn and grow. My technical interests include AI, cloud
+              computing, web technologies, data science. I'm particularly
+              fascinated by Artificial Intelligence and its potential to
+              transform industries.
+            </p>
+            <p class="lead">
+              My goal is to leverage my skills to contribute to impactful
+              projects that make a difference. I am eager to connect with
+              like-minded professionals and explore opportunities.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="page-section" id="skills">
+      <div class="container">
+        <h2
+          class="page-section-heading text-center text-uppercase mb-5 animate-on-scroll"
+        >
+          Skills
+        </h2>
+        <div class="row">
+          <!-- Programming Languages -->
+          <div class="col-lg-4 col-md-6 mb-4 animate-on-scroll">
+            <h4 class="text-center mb-3">
+              <i class="fas fa-code"></i> Programming Languages
+            </h4>
+            <ul class="list-unstyled">
+              <li>
+                Python
+                <div class="progress">
+                  <div
+                    class="progress-bar bg-primary"
+                    role="progressbar"
+                    style="width: 0%"
+                    aria-valuenow="90"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                  >
+                    90%
+                  </div>
+                </div>
+              </li>
+              <li>
+                Java
+                <div class="progress">
+                  <div
+                    class="progress-bar bg-primary"
+                    role="progressbar"
+                    style="width: 0%"
+                    aria-valuenow="85"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                  >
+                    85%
+                  </div>
+                </div>
+              </li>
+              <li>
+                JavaScript
+                <div class="progress">
+                  <div
+                    class="progress-bar bg-primary"
+                    role="progressbar"
+                    style="width: 0%"
+                    aria-valuenow="80"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                  >
+                    80%
+                  </div>
+                </div>
+              </li>
+              <li>
+                C
+                <div class="progress">
+                  <div
+                    class="progress-bar bg-primary"
+                    role="progressbar"
+                    style="width: 0%"
+                    aria-valuenow="70"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                  >
+                    70%
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <!-- Web Development -->
+          <div class="col-lg-4 col-md-6 mb-4 animate-on-scroll">
+            <h4 class="text-center mb-3">
+              <i class="fas fa-laptop-code"></i> Web Development
+            </h4>
+            <ul class="list-unstyled">
+              <li>
+                HTML5 & CSS3
+                <div class="progress">
+                  <div
+                    class="progress-bar bg-success"
+                    role="progressbar"
+                    style="width: 0%"
+                    aria-valuenow="95"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                  >
+                    95%
+                  </div>
+                </div>
+              </li>
+              <li>
+                React
+                <div class="progress">
+                  <div
+                    class="progress-bar bg-success"
+                    role="progressbar"
+                    style="width: 0%"
+                    aria-valuenow="75"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                  >
+                    75%
+                  </div>
+                </div>
+              </li>
+              <li>
+                Node.js & Express
+                <div class="progress">
+                  <div
+                    class="progress-bar bg-success"
+                    role="progressbar"
+                    style="width: 0%"
+                    aria-valuenow="70"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                  >
+                    70%
+                  </div>
+                </div>
+              </li>
+              <li>
+                Bootstrap & Tailwind CSS
+                <div class="progress">
+                  <div
+                    class="progress-bar bg-success"
+                    role="progressbar"
+                    style="width: 0%"
+                    aria-valuenow="90"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                  >
+                    90%
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <!-- Databases & Tools -->
+          <div class="col-lg-4 col-md-6 mb-4 animate-on-scroll">
+            <h4 class="text-center mb-3">
+              <i class="fas fa-database"></i> Databases & Tools
+            </h4>
+            <ul class="list-unstyled">
+              <li>
+                SQL (PostgreSQL/MySQL)
+                <div class="progress">
+                  <div
+                    class="progress-bar bg-info"
+                    role="progressbar"
+                    style="width: 0%"
+                    aria-valuenow="80"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                  >
+                    80%
+                  </div>
+                </div>
+              </li>
+              <li>
+                MongoDB
+                <div class="progress">
+                  <div
+                    class="progress-bar bg-info"
+                    role="progressbar"
+                    style="width: 0%"
+                    aria-valuenow="70"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                  >
+                    70%
+                  </div>
+                </div>
+              </li>
+              <li>
+                Git & GitHub
+                <div class="progress">
+                  <div
+                    class="progress-bar bg-info"
+                    role="progressbar"
+                    style="width: 0%"
+                    aria-valuenow="95"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                  >
+                    95%
+                  </div>
+                </div>
+              </li>
+              <li>
+                Docker
+                <div class="progress">
+                  <div
+                    class="progress-bar bg-info"
+                    role="progressbar"
+                    style="width: 0%"
+                    aria-valuenow="60"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                  >
+                    60%
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <!-- Soft Skills -->
+          <div class="col-lg-12 text-center mt-4 animate-on-scroll">
+            <h4 class="text-center mb-3">
+              <i class="fas fa-users"></i> Soft Skills
+            </h4>
+            <span class="badge bg-secondary m-1 p-2">Problem Solving</span>
+            <span class="badge bg-secondary m-1 p-2">Teamwork</span>
+            <span class="badge bg-secondary m-1 p-2">Communication</span>
+            <span class="badge bg-secondary m-1 p-2">Adaptability</span>
+            <span class="badge bg-secondary m-1 p-2">Time Management</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="page-section bg-light" id="projects">
+      <div class="container">
+        <h2
+          class="page-section-heading text-center text-uppercase mb-5 animate-on-scroll"
+        >
+          Projects
+        </h2>
+        <div class="row justify-content-center">
+          <!-- Project 1 -->
+          <div class="col-md-6 col-lg-4 mb-5 animate-on-scroll">
+            <div class="card project-card h-100">
+              <img
+                src="assets/images/placeholder-project.png"
+                data-src="assets/images/project1.png"
+                class="card-img-top lazy"
+                alt="Project 1 Screenshot"
+              />
+              <!-- UPDATE PATHS -->
+              <div class="card-body d-flex flex-column">
+                <h5 class="card-title">Resume Screener</h5>
+                <p class="card-text">
+                  A web application that uses machine learning to analyze and
+                  rank resumes based on job descriptions. Built with React and
+                  Flask.
+                </p>
+                <p class="card-text">
+                  <small class="text-muted"
+                    ><strong>Technologies:</strong> React, Node.js, MongoDB,
+                    Express</small
+                  >
+                </p>
+                <p class="card-text">
+                  <small class="text-muted"
+                    ><strong>My Role:</strong> Full Stack Developer</small
+                  >
+                </p>
+                <div class="mt-auto text-center">
+                  <a
+                    href="www.github.com/vishweshvpagi/resumescreener"
+                    class="btn btn-primary btn-sm me-2"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    ><i class="fab fa-github"></i> GitHub</a
+                  >
+                  <a
+                    href="www.github.com/vishweshvpagi/resumescreener"
+                    class="btn btn-secondary btn-sm"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    ><i class="fas fa-external-link-alt"></i> Live Demo</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Project 2 -->
+          <div class="col-md-6 col-lg-4 mb-5 animate-on-scroll">
+            <div class="card project-card h-100">
+              <img
+                src="assets/images/placeholder-project.png"
+                data-src="assets/images/project2.png"
+                class="card-img-top lazy"
+                alt="Project 2 Screenshot"
+              />
+              <!-- UPDATE PATHS -->
+              <div class="card-body d-flex flex-column">
+                <h5 class="card-title">FarmFam</h5>
+                <p class="card-text">A web appliaction forr farmers to manage
+                  their crops and livestock. It includes features for tracking
+                  growth, health, and yield.</p>
+                </p>
+                <p class="card-text">
+                  <small class="text-muted"
+                    ><strong>Technologies:</strong> Python, Flask, PostgreSQL,
+                    Docker</small
+                  >
+                </p>
+                <p class="card-text">
+                  <small class="text-muted"
+                    ><strong>My Role:</strong> Full Stack Developer</small
+                  >
+                </p>
+                <div class="mt-auto text-center">
+                  <a
+                    href="www.gihub.com/vishweshvpagi/farmfam"
+                    class="btn btn-primary btn-sm me-2"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    ><i class="fab fa-github"></i> GitHub</a
+                  >
+                  <!-- <a href="#" class="btn btn-secondary btn-sm" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i> Live Demo</a> -->
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Project 3 -->
+          <div class="col-md-6 col-lg-4 mb-5 animate-on-scroll">
+            <div class="card project-card h-100">
+              <img
+                src="assets/images/placeholder-project.png"
+                data-src="assets/images/project3.png"
+                class="card-img-top lazy"
+                alt="Project 3 Screenshot"
+              />
+              <!-- UPDATE PATHS -->
+              <div class="card-body d-flex flex-column">
+                <h5 class="card-title">Poll Management</h5>
+                <p class="card-text">
+                    A web application for managing polls and surveys. Users can
+                    create, share, and analyze polls in real-time.
+                </p>
+                <p class="card-text">
+                  <small class="text-muted"
+                    ><strong>Technologies:</strong> React, Node.js, MongoDB,
+                    Jenkins</small
+                  >
+                </p>
+                <p class="card-text">
+                  <small class="text-muted"
+                    ><strong>My Role:</strong> Full Stack Developer</small
+                  >
+                </p>
+                <div class="mt-auto text-center">
+                  <a
+                    href="www.github.com/vishweshvpagi/pollmanagement"
+                    class="btn btn-primary btn-sm me-2"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    ><i class="fab fa-github"></i> GitHub</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education Section -->
+    <section class="page-section" id="education">
+      <div class="container">
+        <h2
+          class="page-section-heading text-center text-uppercase mb-5 animate-on-scroll"
+        >
+          Education & Certifications
+        </h2>
+        <div class="row">
+          <div class="col-lg-6 mb-4 animate-on-scroll">
+            <div class="card h-100">
+              <div class="card-body">
+                <h4 class="card-title">
+                  <i class="fas fa-university"></i> Bachelor of Science in
+                  Computer Science
+                </h4>
+                <h6 class="card-subtitle mb-2 text-muted">
+                  C M R University - Bangalore, India
+                </h6>
+                <p class="card-text">
+                  <em
+                    >Expected Graduation:July 2026 (4 years)</em
+                  >
+                </p>
+                <p class="card-text">
+                  <strong>Relevant Coursework:</strong> Data Structures &
+                  Algorithms, Object-Oriented Programming, Database Management,
+                  Web Development, Operating Systems, Software Engineering.
+                </p>
+                <p class="card-text">
+                  <strong>Achievements:</strong>Member of Tech Club,3rd place in Hackathon
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 mb-4 animate-on-scroll">
+            <div class="card h-100">
+              <div class="card-body">
+                <h4 class="card-title">
+                  <i class="fas fa-certificate"></i> Certifications & Training
+                </h4>
+                <ul class="list-unstyled">
+                  <li class="mb-2">
+                    <strong></strong> - [Issuing
+                    Organization] <em>([Date Earned])</em>
+                  </li>
+                  <li class="mb-2">
+                    <strong
+                      > AWS Cloud
+                      Practitioner</strong
+                    >
+                    - Udemy
+                    <em>(2025)</em>
+                  </li>
+                  <li class="mb-2">
+                    <strong>[Relevant Workshop or Bootcamp]</strong> -
+                    [Organizer] <em>([Date Attended])</em>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="page-section bg-light" id="contact">
+      <div class="container">
+        <h2
+          class="page-section-heading text-center text-uppercase mb-5 animate-on-scroll"
+        >
+          Contact Me
+        </h2>
+        <div class="row justify-content-center">
+          <div class="col-lg-8 text-center animate-on-scroll">
+            <p class="lead mb-5">
+              I'm always open to discussing new projects, creative ideas, or
+              opportunities to be part of something great. Feel free to reach
+              out!
+            </p>
+            <div class="mb-4">
+              <a
+                href="mailto:vishweshvpagi@gmail.com"
+                class="btn btn-xl btn-outline-dark me-3"
+              >
+                <i class="fas fa-envelope me-2"></i> Email Me
+              </a>
+            </div>
+            <div class="social-icons mb-4">
+              <a
+                class="social-icon"
+                href="https://github.com/vishweshvpagi"
+                target="_blank"
+                rel="noopener noreferrer"
+                ><i class="fab fa-github"></i
+              ></a>
+              <a
+                class="social-icon"
+                href="https://linkedin.com/in/vishweshvpagi"
+                target="_blank"
+                rel="noopener noreferrer"
+                ><i class="fab fa-linkedin-in"></i
+              ></a>
+              <a
+                class="social-icon"
+                href="https://twitter.com/vishweshvpagi"
+                target="_blank"
+                rel="noopener noreferrer"
+                ><i class="fab fa-twitter"></i
+              ></a>
+              <!-- Add more social links as needed -->
+            </div>
+
+            <!-- Optional Contact Form (Requires backend or service like Formspree) -->
+            <h4 class="mt-5 mb-3">Or send a direct message:</h4>
+            <form
+              id="contactForm"
+              action="YOUR_FORMSPREE_ENDPOINT_HERE"
+              method="POST"
+              novalidate
+            >
+              <div class="form-floating mb-3">
+                <input
+                  class="form-control"
+                  id="name"
+                  name="name"
+                  type="text"
+                  placeholder="Enter your name..."
+                  required
+                />
+                <label for="name">Full name</label>
+                <div class="invalid-feedback" data-sb-feedback="name:required">
+                  A name is required.
+                </div>
+              </div>
+              <div class="form-floating mb-3">
+                <input
+                  class="form-control"
+                  id="email"
+                  name="email"
+                  type="email"
+                  placeholder="name@example.com"
+                  required
+                />
+                <label for="email">Email address</label>
+                <div class="invalid-feedback" data-sb-feedback="email:required">
+                  An email is required.
+                </div>
+                <div class="invalid-feedback" data-sb-feedback="email:email">
+                  Email is not valid.
+                </div>
+              </div>
+              <div class="form-floating mb-3">
+                <textarea
+                  class="form-control"
+                  id="message"
+                  name="message"
+                  type="text"
+                  placeholder="Enter your message here..."
+                  style="height: 10rem"
+                  required
+                ></textarea>
+                <label for="message">Message</label>
+                <div
+                  class="invalid-feedback"
+                  data-sb-feedback="message:required"
+                >
+                  A message is required.
+                </div>
+              </div>
+              <!-- Submit success message (optional, Formspree handles this) -->
+              <div class="d-none" id="submitSuccessMessage">
+                <div class="text-center text-success mb-3">
+                  Message sent successfully!
+                </div>
+              </div>
+              <!-- Submit error message (optional) -->
+              <div class="d-none" id="submitErrorMessage">
+                <div class="text-center text-danger mb-3">
+                  Error sending message! Please try again.
+                </div>
+              </div>
+              <button
+                class="btn btn-primary btn-xl"
+                id="submitButton"
+                type="submit"
+              >
+                Send Message
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer text-center">
+      <div class="container">
+        <p class="text-muted small mb-0">
+          Copyright © Your Name <span id="currentYear"></span>. All Rights
+          Reserved.
+        </p>
+      </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="backToTopBtn" title="Go to top">
+      <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Typed.js (for animated text) -->
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // --- 1. NAVBAR FUNCTIONALITY (Active Link & Shrink) ---
+        const mainNav = document.getElementById("mainNav");
+        const navLinks = document.querySelectorAll(
+          "#navbarResponsive .nav-link"
+        );
+        const sections = document.querySelectorAll("section"); // For more accurate scroll spy
+
+        function updateActiveNavLink() {
+          let currentSectionId = "";
+          const navHeight = mainNav ? mainNav.offsetHeight : 70; // Default to 70 if nav not found yet
+
+          sections.forEach((section) => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            if (
+              pageYOffset >= sectionTop - navHeight &&
+              pageYOffset < sectionTop + sectionHeight - navHeight
+            ) {
+              currentSectionId = section.getAttribute("id");
+            }
+          });
+
+          const aboutSection = document.getElementById("about");
+          if (
+            aboutSection &&
+            pageYOffset < aboutSection.offsetTop - navHeight * 1.5
+          ) {
+            currentSectionId = "home";
+          }
+
+          navLinks.forEach((link) => {
+            link.classList.remove("active");
+            if (link.getAttribute("href").substring(1) === currentSectionId) {
+              link.classList.add("active");
+            }
+          });
+        }
+
+        var navbarShrink = function () {
+          if (!mainNav) {
+            return;
+          }
+          if (window.scrollY < 50) {
+            mainNav.classList.remove("navbar-shrink");
+          } else {
+            mainNav.classList.add("navbar-shrink");
+          }
+        };
+
+        navbarShrink();
+        updateActiveNavLink();
+        document.addEventListener("scroll", navbarShrink);
+        document.addEventListener("scroll", updateActiveNavLink);
+
+        // --- 2. TYPED.JS FOR ANIMATED TEXT ---
+        const typedTextElement = document.getElementById("typed-text");
+        if (typedTextElement) {
+          new Typed("#typed-text", {
+            strings: [
+              "Computer Science Student",
+              "Aspiring Full-Stack Developer",
+              "Tech Enthusiast",
+              "Problem Solver",
+            ],
+            typeSpeed: 50,
+            backSpeed: 30,
+            loop: true,
+            backDelay: 2000,
+            smartBackspace: true,
+          });
+        }
+
+        // --- 3. SMOOTH SCROLL FOR NAV LINKS & COLLAPSE NAVBAR ON CLICK ---
+        document.querySelectorAll('a.nav-link[href^="#"]').forEach((anchor) => {
+          anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute("href");
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+              const navbarHeight = mainNav ? mainNav.offsetHeight : 0;
+              const elementPosition = targetElement.getBoundingClientRect().top;
+              const offsetPosition =
+                elementPosition +
+                window.pageYOffset -
+                (navbarHeight > 0 ? navbarHeight - 1 : 0);
+
+              window.scrollTo({
+                top: offsetPosition,
+                behavior: "smooth",
+              });
+
+              const navbarToggler = document.querySelector(".navbar-toggler");
+              const navbarCollapse =
+                document.getElementById("navbarResponsive");
+              if (navbarCollapse && navbarCollapse.classList.contains("show")) {
+                try {
+                  // Added try-catch for safety if bootstrap instance not found
+                  const bsCollapse =
+                    bootstrap.Collapse.getInstance(navbarCollapse);
+                  if (bsCollapse) {
+                    bsCollapse.hide();
+                  }
+                } catch (error) {
+                  console.warn(
+                    "Could not get Bootstrap Collapse instance:",
+                    error
+                  );
+                }
+              }
+            }
+          });
+        });
+
+        // --- 4. ANIMATE PROGRESS BARS ON VIEW ---
+        const skillsSection = document.getElementById("skills");
+        const progressBars = document.querySelectorAll("#skills .progress-bar");
+
+        const animateProgressBars = (entries, observer) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const progressBar = entry.target;
+              progressBar.style.width =
+                progressBar.getAttribute("aria-valuenow") + "%";
+              observer.unobserve(progressBar);
+            }
+          });
+        };
+
+        if (skillsSection && progressBars.length > 0) {
+          const skillObserver = new IntersectionObserver(animateProgressBars, {
+            root: null,
+            threshold: 0.2,
+          });
+          progressBars.forEach((bar) => {
+            // style.width is set to 0% in HTML/CSS for initial state
+            skillObserver.observe(bar);
+          });
+        }
+
+        // --- 5. UPDATE FOOTER YEAR ---
+        const currentYearSpan = document.getElementById("currentYear");
+        if (currentYearSpan) {
+          currentYearSpan.textContent = new Date().getFullYear();
+        }
+
+        // --- 6. BACK TO TOP BUTTON ---
+        const backToTopButton = document.getElementById("backToTopBtn");
+        if (backToTopButton) {
+          window.addEventListener("scroll", () => {
+            if (window.pageYOffset > 300) {
+              backToTopButton.style.display = "block";
+              // Force reflow before adding opacity for transition to work
+              void backToTopButton.offsetWidth;
+              backToTopButton.style.opacity = "1";
+            } else {
+              backToTopButton.style.opacity = "0";
+              setTimeout(() => {
+                if (window.pageYOffset <= 300) {
+                  backToTopButton.style.display = "none";
+                }
+              }, 300);
+            }
+          });
+
+          backToTopButton.addEventListener("click", () => {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          });
+        }
+
+        // --- 7. GENERIC ANIMATE ON SCROLL (using Intersection Observer) ---
+        const elementsToAnimate =
+          document.querySelectorAll(".animate-on-scroll");
+        if (elementsToAnimate.length > 0) {
+          const observerOptions = {
+            root: null,
+            rootMargin: "0px",
+            threshold: 0.1,
+          };
+
+          const animationObserver = new IntersectionObserver(
+            (entries, observer) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  entry.target.classList.add("is-visible");
+                  observer.unobserve(entry.target);
+                }
+              });
+            },
+            observerOptions
+          );
+
+          elementsToAnimate.forEach((element) => {
+            animationObserver.observe(element);
+          });
+        }
+
+        // --- 8. CLIENT-SIDE CONTACT FORM VALIDATION ---
+        const contactForm = document.getElementById("contactForm");
+        if (contactForm) {
+          contactForm.addEventListener("submit", function (event) {
+            let isValid = true;
+            const nameInput = document.getElementById("name");
+            const emailInput = document.getElementById("email");
+            const messageInput = document.getElementById("message");
+
+            document
+              .querySelectorAll(".invalid-feedback")
+              .forEach((el) => (el.style.display = "none"));
+            [nameInput, emailInput, messageInput].forEach((input) => {
+              if (input) input.classList.remove("is-invalid");
+            });
+
+            if (nameInput && !nameInput.value.trim()) {
+              displayError(nameInput, "name:required", "A name is required.");
+              isValid = false;
+            }
+
+            if (emailInput) {
+              if (!emailInput.value.trim()) {
+                displayError(
+                  emailInput,
+                  "email:required",
+                  "An email is required."
+                );
+                isValid = false;
+              } else if (!isValidEmail(emailInput.value.trim())) {
+                displayError(emailInput, "email:email", "Email is not valid.");
+                isValid = false;
+              }
+            }
+
+            if (messageInput && !messageInput.value.trim()) {
+              displayError(
+                messageInput,
+                "message:required",
+                "A message is required."
+              );
+              isValid = false;
+            }
+
+            if (!isValid) {
+              event.preventDefault();
+              event.stopPropagation();
+            }
+          });
+
+          function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+          }
+
+          function displayError(inputElement, feedbackType, defaultMessage) {
+            if (!inputElement) return;
+            inputElement.classList.add("is-invalid");
+            let errorElement = inputElement.parentElement.querySelector(
+              `.invalid-feedback[data-sb-feedback*="${feedbackType}"]`
+            );
+            if (!errorElement) {
+              errorElement =
+                inputElement.parentElement.querySelector(".invalid-feedback");
+            }
+            if (errorElement) {
+              errorElement.textContent = defaultMessage;
+              errorElement.style.display = "block";
+            }
+          }
+        }
+
+        // --- 9. LAZY LOADING FOR IMAGES ---
+        const lazyImages = document.querySelectorAll("img.lazy");
+        if (lazyImages.length > 0) {
+          const lazyImageObserver = new IntersectionObserver(
+            (entries, observer) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  const img = entry.target;
+                  img.src = img.dataset.src;
+                  img.onload = () => {
+                    img.classList.remove("lazy");
+                    img.classList.add("lazy-loaded");
+                  };
+                  img.onerror = () => {
+                    console.error("Could not load image: " + img.dataset.src);
+                    img.classList.remove("lazy");
+                    // img.src = 'assets/images/image-load-error.png'; // Fallback
+                  };
+                  observer.unobserve(img);
+                }
+              });
+            },
+            { rootMargin: "0px 0px 100px 0px" }
+          );
+
+          lazyImages.forEach((img) => {
+            lazyImageObserver.observe(img);
+          });
+        }
+      }); // End DOMContentLoaded
+    </script>
+  </body>
+</html>
