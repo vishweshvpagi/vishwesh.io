@@ -368,6 +368,13 @@
                 ><i class="fas fa-graduation-cap"></i> Education</a
               >
             </li>
+             </li>
+            <!-- START: New Resume Link -->
+            <li class="nav-item">
+              <a class="nav-link" href="#resume"
+                ><i class="fas fa-file-alt"></i> Resume</a
+              >
+            </li>
             <li class="nav-item">
               <a class="nav-link" href="#contact"
                 ><i class="fas fa-envelope"></i> Contact</a
@@ -866,6 +873,65 @@
         </div>
       </div>
     </section>
+        <!-- Education Section -->
+    <section class="page-section" id="education">
+      <!-- ... existing education content ... -->
+    </section>
+
+    <!-- START: Resume Section -->
+    <section class="page-section bg-light" id="resume">
+      <div class="container">
+        <h2
+          class="page-section-heading text-center text-uppercase mb-5 animate-on-scroll"
+        >
+          My Resume
+        </h2>
+        <div class="row justify-content-center">
+          <div class="col-lg-10 col-xl-8 text-center animate-on-scroll">
+            <p class="lead mb-4">
+              Feel free to view my resume below or download a copy.
+            </p>
+            <!--
+              IMPORTANT:
+              1. Replace 'YOUR_ACTUAL_RESUME_IMAGE.png' with the actual path to your resume image file.
+                 Example: assets/images/my_resume_preview.png
+              2. Replace 'assets/images/placeholder-resume.png' with a path to a placeholder image,
+                 or use one of your existing project placeholders like 'assets/images/placeholder-project.png'.
+                 This image shows while the main resume image is lazy-loading.
+              3. Ensure the image and placeholder paths are correct relative to your HTML file.
+            -->
+            <img
+              src="c:\Users\vishw\Downloads\Resume (1) (1)_page-0001 (1).jpg.png" 
+              data-src="c:\Users\vishw\Downloads\Resume (1) (1)_page-0001 (1).jpg.png"    
+              class="img-fluid lazy mb-4 shadow-lg"
+              alt="Vishwesh's Resume Preview"
+              style="border: 1px solid #dee2e6; max-height: 75vh; object-fit: contain;"
+            />
+            <!--
+              IMPORTANT:
+              1. Replace 'YOUR_ACTUAL_RESUME_FILE.pdf' with the actual path to your resume PDF file.
+                 Example: assets/pdf/vishwesh_pagi_resume.pdf
+              2. The 'download' attribute suggests a filename to the browser.
+            -->
+            <a
+              href="c:\Users\vishw\Downloads\Resume (1) (1).pdf"
+              class="btn btn-primary btn-xl mt-3"
+              target="_blank"
+              rel="noopener noreferrer"
+              download="Vishwesh_Resume.pdf"
+            >
+              <i class="fas fa-download me-2"></i> Download Resume (PDF)
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- END: Resume Section -->
+
+    <!-- Contact Section -->
+    <!-- To maintain background alternation (Light -> White), remove 'bg-light' from contact section -->
+    <section class="page-section" id="contact">
+      <!-- ... existing contact content ... -->
 
     <!-- Contact Section -->
     <section class="page-section bg-light" id="contact">
