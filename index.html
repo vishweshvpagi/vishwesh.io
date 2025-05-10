@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Your Name - Portfolio</title>
+    <title>Vishwesh - Portfolio</title>
 
     <!-- Bootstrap CSS -->
     <link
@@ -57,20 +57,27 @@
         color: #2c3e50; /* Dark Blue/Grey */
       }
 
-      /* Navigation Bar */
+      /* --- START: UPDATED RESPONSIVE NAVIGATION BAR --- */
       #mainNav {
         transition: padding-top 0.3s ease-in-out,
           padding-bottom 0.3s ease-in-out, background-color 0.3s ease-in-out;
+        /* Ensure a minimum height for the navbar, especially when not shrunk */
+        min-height: 56px; /* Corresponds to default Bootstrap navbar height */
       }
+
       #mainNav .navbar-brand {
         font-family: "Montserrat", sans-serif;
         font-weight: 700;
         color: #1abc9c; /* Teal Accent */
+        font-size: 1.5rem; /* Default size */
+        transition: font-size 0.3s ease-in-out;
       }
 
       #mainNav .nav-link {
         font-weight: 600;
         color: rgba(255, 255, 255, 0.7);
+        padding: 0.5rem 1rem; /* Default padding */
+        transition: color 0.3s ease-in-out, padding 0.3s ease-in-out;
       }
 
       #mainNav .nav-link:hover,
@@ -80,6 +87,7 @@
 
       #mainNav .nav-link i {
         margin-right: 0.5rem;
+        transition: margin-right 0.3s ease-in-out;
       }
 
       .navbar-shrink {
@@ -87,6 +95,92 @@
         padding-bottom: 0.5rem !important;
         background-color: #212529 !important; /* Darker background when shrunk */
       }
+
+      /* Navbar Responsive Adjustments */
+      @media (max-width: 991.98px) {
+        /* Medium devices (tablets, less than 992px) - Bootstrap collapse point */
+        #mainNav .navbar-brand {
+          font-size: 1.35rem; /* Slightly smaller brand on tablets */
+        }
+
+        #mainNav .navbar-collapse {
+          /* When the navbar is collapsed and then opened */
+          background-color: #2c3e50; /* Match home section or a distinct dark color for dropdown */
+          border-top: 1px solid rgba(255, 255, 255, 0.1); /* Separator line from toggler */
+          margin-top: 0.5rem; /* Space between toggler and first item */
+          padding-bottom: 0.5rem; /* Padding at the bottom of the collapsed menu */
+        }
+
+        #mainNav .navbar-nav {
+          width: 100%; /* Ensure nav items take full width in collapsed menu */
+          text-align: left; /* Align text to the left for a cleaner look in collapsed menu */
+        }
+
+        #mainNav .nav-item {
+          border-bottom: 1px solid rgba(255, 255, 255, 0.05); /* Subtle separator between items */
+        }
+        #mainNav .nav-item:last-child {
+          border-bottom: none; /* No border for the last item */
+        }
+
+        #mainNav .nav-link {
+          padding: 0.75rem 1.5rem; /* Larger tap targets in collapsed menu, more padding */
+          display: block; /* Make the link take the full width of the nav-item */
+          width: 100%;
+        }
+
+        #mainNav .nav-link i {
+          margin-right: 0.75rem; /* Give icon a bit more space */
+        }
+      }
+
+      @media (max-width: 767.98px) {
+        /* Small devices (landscape phones, less than 768px) */
+        /* body padding-top adjusted via JS or if navbar min-height changes significantly */
+        #mainNav {
+          /* min-height: 50px; */ /* Optionally reduce min-height if needed */
+        }
+        #mainNav .navbar-brand {
+          font-size: 1.2rem; /* Further reduce brand size */
+        }
+
+        #mainNav .nav-link {
+          font-size: 0.95rem; /* Slightly smaller font for nav links */
+          padding: 0.7rem 1.25rem; /* Adjust padding */
+        }
+
+        #mainNav .nav-link i {
+          margin-right: 0.6rem;
+        }
+
+        .navbar-shrink {
+          /* Adjustments for when the navbar is shrunk on small screens */
+          padding-top: 0.4rem !important;
+          padding-bottom: 0.4rem !important;
+        }
+      }
+
+      @media (max-width: 575.98px) {
+        /* Extra small devices (portrait phones, less than 576px) */
+        #mainNav .navbar-brand {
+          font-size: 1.1rem; /* Even smaller brand name */
+        }
+
+        #mainNav .nav-link {
+          font-size: 0.9rem; /* Smaller font for nav links */
+          padding: 0.6rem 1rem; /* Further adjust padding */
+          text-align: center; /* Center text of nav links on very small screens */
+        }
+
+        #mainNav .nav-link i {
+          display: block; /* Stack icon above text */
+          margin-right: 0;
+          margin-bottom: 0.25rem;
+          font-size: 1.1em; /* Make icon slightly larger relative to text if stacked */
+          text-align: center; /* Ensure icon is centered too */
+        }
+      }
+      /* --- END: UPDATED RESPONSIVE NAVIGATION BAR --- */
 
       /* Home Section */
       .home-section {
@@ -100,8 +194,8 @@
       }
 
       .masthead-avatar {
-        width: 15rem;
-        height: 15rem;
+        width: 20rem;
+        height: 20rem;
         border-radius: 50%;
         border: 0.5rem solid rgba(255, 255, 255, 0.2);
         object-fit: cover; /* Ensures the image covers the area without distortion */
@@ -202,6 +296,23 @@
         border-left: 5px solid #1abc9c; /* Teal Accent */
       }
 
+      /* Resume Section Specific Styles */
+      #resume .resume-image-container {
+        margin-bottom: 2rem;
+      }
+      #resume .resume-image {
+        max-width: 100%;
+        height: auto;
+        max-height: 80vh;
+        border: 1px solid #dee2e6;
+        border-radius: 0.25rem;
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+        object-fit: contain;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
       /* Contact Section */
       .social-icons .social-icon {
         display: inline-flex;
@@ -223,12 +334,11 @@
         background-color: #1abc9c; /* Teal Accent */
       }
       .invalid-feedback {
-        /* Ensure Bootstrap's invalid feedback is visible */
-        display: none; /* Hidden by default, JS will show it */
+        display: none;
         width: 100%;
         margin-top: 0.25rem;
         font-size: 0.875em;
-        color: #dc3545; /* Bootstrap's danger color */
+        color: #dc3545;
       }
       .form-control.is-invalid ~ .invalid-feedback {
         display: block;
@@ -248,14 +358,14 @@
 
       /* Back to Top Button */
       #backToTopBtn {
-        display: none; /* Hidden by default */
+        display: none;
         position: fixed;
         bottom: 20px;
         right: 30px;
         z-index: 99;
         border: none;
         outline: none;
-        background-color: #1abc9c; /* Teal Accent */
+        background-color: #1abc9c;
         color: white;
         cursor: pointer;
         padding: 10px 15px;
@@ -266,40 +376,67 @@
       }
 
       #backToTopBtn:hover {
-        background-color: #16a085; /* Darker Teal */
+        background-color: #16a085;
       }
 
-      /* Generic Scroll Animation - Initial State */
+      /* Generic Scroll Animation */
       .animate-on-scroll {
         opacity: 0;
-        transform: translateY(30px); /* Or translateX, scale, etc. */
+        transform: translateY(30px);
         transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        will-change: opacity, transform; /* Performance hint */
+        will-change: opacity, transform;
       }
-
-      /* Generic Scroll Animation - Visible State (triggered by JS) */
       .animate-on-scroll.is-visible {
         opacity: 1;
         transform: translateY(0);
       }
 
-      /* Lazy Loading Images Styling (Optional) */
+      /* Lazy Loading Images */
       img.lazy {
-        opacity: 0; /* Start invisible */
+        opacity: 0;
         transition: opacity 0.5s ease-in-out;
       }
-
       img.lazy-loaded {
-        opacity: 1; /* Fade in when loaded */
+        opacity: 1;
       }
 
-      /* Responsive Adjustments */
+      /* START: TINY PERMANENT BUBBLE Effect Styles (Scrolls with Page) */
+      .tiny-click-bubble {
+        position: absolute; /* Position relative to the document flow */
+        border-radius: 50%;
+        pointer-events: none; /* Crucial to allow clicks through */
+        z-index: 1; /* Lower z-index if bubbles should be behind other content, adjust if needed */
+        opacity: 0; /* Start invisible */
+        transform: scale(0) translate(-50%, -50%); /* Start small AND centered on its position */
+      }
+
+      @keyframes tinyBubbleAppearAnimation {
+        0% {
+          transform: scale(20) rotate(-90deg) translate(-50%, -50%); /* Maintain centering */
+          opacity: 0;
+        }
+        70% {
+          transform: scale(1.5) rotate(15deg) translate(-50%, -50%); /* Maintain centering */
+          opacity: 0.9;
+        }
+        100% {
+          transform: scale(10) rotate(0deg) translate(-50%, -50%); /* Maintain centering */
+          opacity: 0.75;
+        }
+      }
+      /* END: TINY PERMANENT BUBBLE Effect Styles (Scrolls with Page) */
+
+      /* General Responsive Adjustments */
       @media (max-width: 991.98px) {
         .home-section {
           padding-top: calc(4rem + 56px);
           padding-bottom: 4rem;
         }
         .masthead-avatar {
+          width: 12rem;
+          height: 12rem;
+        }
+        .masthead-avatar img {
           width: 10rem;
           height: 10rem;
         }
@@ -309,20 +446,24 @@
         .page-section-heading {
           font-size: 2rem;
         }
-      }
-      @media (max-width: 767.98px) {
-        #mainNav .navbar-nav {
-          text-align: center; /* Center nav items in collapsed menu */
+        #resume .resume-image {
+          max-height: 75vh;
         }
-        #mainNav .nav-item {
-          padding: 0.5rem 0;
+      }
+
+      @media (max-width: 767.98px) {
+        #resume .resume-image {
+          max-height: 70vh;
+          box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.1);
+        }
+        #resume .btn-download-resume {
+          font-size: 1rem;
+          padding: 0.6rem 1.2rem;
         }
       }
     </style>
   </head>
   <body data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="75">
-    <!-- Adjust data-bs-offset as needed -->
-
     <!-- Navigation Bar -->
     <nav
       class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top"
@@ -368,8 +509,6 @@
                 ><i class="fas fa-graduation-cap"></i> Education</a
               >
             </li>
-             </li>
-            <!-- START: New Resume Link -->
             <li class="nav-item">
               <a class="nav-link" href="#resume"
                 ><i class="fas fa-file-alt"></i> Resume</a
@@ -388,7 +527,7 @@
     <!-- Home Section -->
     <header class="home-section text-white text-center" id="home">
       <div class="container d-flex align-items-center flex-column">
-        <img class="masthead-avatar mb-5" src="" alt=" Avatar" />
+        <img class="masthead-avatar mb-5" src="FaceAvatar.png" alt=" Avatar" />
         <!-- UPDATE PATH IF NEEDED -->
         <h1 class="masthead-heading mb-0 animated-name">Vishwesh</h1>
         <div class="divider-custom divider-light">
@@ -682,8 +821,8 @@
           <div class="col-md-6 col-lg-4 mb-5 animate-on-scroll">
             <div class="card project-card h-100">
               <img
-                src="assets/images/placeholder-project.png"
-                data-src="assets/images/project1.png"
+                src="resumescreener.jpg"
+                data-src="resumescreener.jpg"
                 class="card-img-top lazy"
                 alt="Project 1 Screenshot"
               />
@@ -729,17 +868,18 @@
           <div class="col-md-6 col-lg-4 mb-5 animate-on-scroll">
             <div class="card project-card h-100">
               <img
-                src="assets/images/placeholder-project.png"
-                data-src="assets/images/project2.png"
+                src="farmfam.jpg"
+                data-src="farmfam.jpg"
                 class="card-img-top lazy"
                 alt="Project 2 Screenshot"
               />
               <!-- UPDATE PATHS -->
               <div class="card-body d-flex flex-column">
                 <h5 class="card-title">FarmFam</h5>
-                <p class="card-text">A web appliaction forr farmers to manage
-                  their crops and livestock. It includes features for tracking
-                  growth, health, and yield.</p>
+                <p class="card-text">
+                  A web appliaction forr farmers to manage their crops and
+                  livestock. It includes features for tracking growth, health,
+                  and yield.
                 </p>
                 <p class="card-text">
                   <small class="text-muted"
@@ -760,7 +900,6 @@
                     rel="noopener noreferrer"
                     ><i class="fab fa-github"></i> GitHub</a
                   >
-                  <!-- <a href="#" class="btn btn-secondary btn-sm" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i> Live Demo</a> -->
                 </div>
               </div>
             </div>
@@ -769,17 +908,16 @@
           <div class="col-md-6 col-lg-4 mb-5 animate-on-scroll">
             <div class="card project-card h-100">
               <img
-                src="assets/images/placeholder-project.png"
-                data-src="assets/images/project3.png"
+                src="poll.jpg"
+                data-src="poll.jpg"
                 class="card-img-top lazy"
                 alt="Project 3 Screenshot"
               />
-              <!-- UPDATE PATHS -->
               <div class="card-body d-flex flex-column">
                 <h5 class="card-title">Poll Management</h5>
                 <p class="card-text">
-                    A web application for managing polls and surveys. Users can
-                    create, share, and analyze polls in real-time.
+                  A web application for managing polls and surveys. Users can
+                  create, share, and analyze polls in real-time.
                 </p>
                 <p class="card-text">
                   <small class="text-muted"
@@ -828,9 +966,7 @@
                   C M R University - Bangalore, India
                 </h6>
                 <p class="card-text">
-                  <em
-                    >Expected Graduation:July 2026 (4 years)</em
-                  >
+                  <em>Expected Graduation:July 2026 (4 years)</em>
                 </p>
                 <p class="card-text">
                   <strong>Relevant Coursework:</strong> Data Structures &
@@ -838,7 +974,8 @@
                   Web Development, Operating Systems, Software Engineering.
                 </p>
                 <p class="card-text">
-                  <strong>Achievements:</strong>Member of Tech Club,3rd place in Hackathon
+                  <strong>Achievements:</strong>Member of Tech Club,3rd place in
+                  Hackathon
                 </p>
               </div>
             </div>
@@ -851,14 +988,11 @@
                 </h4>
                 <ul class="list-unstyled">
                   <li class="mb-2">
-                    <strong></strong> - [Issuing
-                    Organization] <em>([Date Earned])</em>
+                    <strong></strong> - [Issuing Organization]
+                    <em>([Date Earned])</em>
                   </li>
                   <li class="mb-2">
-                    <strong
-                      > AWS Cloud
-                      Practitioner</strong
-                    >
+                    <strong> AWS Cloud Practitioner</strong>
                     - Udemy
                     <em>(2025)</em>
                   </li>
@@ -873,12 +1007,8 @@
         </div>
       </div>
     </section>
-        <!-- Education Section -->
-    <section class="page-section" id="education">
-      <!-- ... existing education content ... -->
-    </section>
 
-    <!-- START: Resume Section -->
+    <!-- Resume Section -->
     <section class="page-section bg-light" id="resume">
       <div class="container">
         <h2
@@ -891,31 +1021,17 @@
             <p class="lead mb-4">
               Feel free to view my resume below or download a copy.
             </p>
-            <!--
-              IMPORTANT:
-              1. Replace 'YOUR_ACTUAL_RESUME_IMAGE.png' with the actual path to your resume image file.
-                 Example: assets/images/my_resume_preview.png
-              2. Replace 'assets/images/placeholder-resume.png' with a path to a placeholder image,
-                 or use one of your existing project placeholders like 'assets/images/placeholder-project.png'.
-                 This image shows while the main resume image is lazy-loading.
-              3. Ensure the image and placeholder paths are correct relative to your HTML file.
-            -->
-            <img
-              src="c:\Users\vishw\Downloads\Resume (1) (1)_page-0001 (1).jpg.png" 
-              data-src="c:\Users\vishw\Downloads\Resume (1) (1)_page-0001 (1).jpg.png"    
-              class="img-fluid lazy mb-4 shadow-lg"
-              alt="Vishwesh's Resume Preview"
-              style="border: 1px solid #dee2e6; max-height: 75vh; object-fit: contain;"
-            />
-            <!--
-              IMPORTANT:
-              1. Replace 'YOUR_ACTUAL_RESUME_FILE.pdf' with the actual path to your resume PDF file.
-                 Example: assets/pdf/vishwesh_pagi_resume.pdf
-              2. The 'download' attribute suggests a filename to the browser.
-            -->
+            <div class="resume-image-container">
+              <img
+                src="Resume.jpg"
+                data-src="resume.jpg"
+                class="lazy resume-image"
+                alt="Vishwesh's Resume Preview"
+              />
+            </div>
             <a
-              href="c:\Users\vishw\Downloads\Resume (1) (1).pdf"
-              class="btn btn-primary btn-xl mt-3"
+              href="resume.pdf"
+              class="btn btn-primary btn-xl mt-3 btn-download-resume"
               target="_blank"
               rel="noopener noreferrer"
               download="Vishwesh_Resume.pdf"
@@ -926,15 +1042,10 @@
         </div>
       </div>
     </section>
-    <!-- END: Resume Section -->
 
     <!-- Contact Section -->
-    <!-- To maintain background alternation (Light -> White), remove 'bg-light' from contact section -->
     <section class="page-section" id="contact">
-      <!-- ... existing contact content ... -->
-
-    <!-- Contact Section -->
-    <section class="page-section bg-light" id="contact">
+      <!-- Removed bg-light -->
       <div class="container">
         <h2
           class="page-section-heading text-center text-uppercase mb-5 animate-on-scroll"
@@ -978,10 +1089,8 @@
                 rel="noopener noreferrer"
                 ><i class="fab fa-twitter"></i
               ></a>
-              <!-- Add more social links as needed -->
             </div>
 
-            <!-- Optional Contact Form (Requires backend or service like Formspree) -->
             <h4 class="mt-5 mb-3">Or send a direct message:</h4>
             <form
               id="contactForm"
@@ -1038,13 +1147,11 @@
                   A message is required.
                 </div>
               </div>
-              <!-- Submit success message (optional, Formspree handles this) -->
               <div class="d-none" id="submitSuccessMessage">
                 <div class="text-center text-success mb-3">
                   Message sent successfully!
                 </div>
               </div>
-              <!-- Submit error message (optional) -->
               <div class="d-none" id="submitErrorMessage">
                 <div class="text-center text-danger mb-3">
                   Error sending message! Please try again.
@@ -1067,7 +1174,7 @@
     <footer class="footer text-center">
       <div class="container">
         <p class="text-muted small mb-0">
-          Copyright © Your Name <span id="currentYear"></span>. All Rights
+          Copyright © Vishwesh <span id="currentYear"></span>. All Rights
           Reserved.
         </p>
       </div>
@@ -1095,34 +1202,45 @@
         const navLinks = document.querySelectorAll(
           "#navbarResponsive .nav-link"
         );
-        const sections = document.querySelectorAll("section"); // For more accurate scroll spy
+        const sections = document.querySelectorAll("section, header"); // Include header for 'home'
 
         function updateActiveNavLink() {
           let currentSectionId = "";
-          const navHeight = mainNav ? mainNav.offsetHeight : 70; // Default to 70 if nav not found yet
+          const navHeight = mainNav ? mainNav.offsetHeight : 70;
 
           sections.forEach((section) => {
             const sectionTop = section.offsetTop;
             const sectionHeight = section.clientHeight;
             if (
-              pageYOffset >= sectionTop - navHeight &&
-              pageYOffset < sectionTop + sectionHeight - navHeight
+              pageYOffset >= sectionTop - navHeight * 1.1 && // Adjusted threshold slightly
+              pageYOffset < sectionTop + sectionHeight - navHeight * 0.5 // Adjusted threshold
             ) {
               currentSectionId = section.getAttribute("id");
             }
           });
 
-          const aboutSection = document.getElementById("about");
+          // Fallback for very top of page (home section)
+          const homeSection = document.getElementById("home");
           if (
-            aboutSection &&
-            pageYOffset < aboutSection.offsetTop - navHeight * 1.5
+            homeSection &&
+            pageYOffset <
+              homeSection.offsetTop +
+                homeSection.offsetHeight -
+                navHeight * 1.5 &&
+            !currentSectionId
           ) {
-            currentSectionId = "home";
+            if (
+              pageYOffset <
+              (document.getElementById("about")?.offsetTop || Infinity) -
+                navHeight * 1.5
+            ) {
+              currentSectionId = "home";
+            }
           }
 
           navLinks.forEach((link) => {
             link.classList.remove("active");
-            if (link.getAttribute("href").substring(1) === currentSectionId) {
+            if (link.getAttribute("href") === `#${currentSectionId}`) {
               link.classList.add("active");
             }
           });
@@ -1140,9 +1258,9 @@
         };
 
         navbarShrink();
-        updateActiveNavLink();
+        updateActiveNavLink(); // Initial call
         document.addEventListener("scroll", navbarShrink);
-        document.addEventListener("scroll", updateActiveNavLink);
+        document.addEventListener("scroll", updateActiveNavLink); // Update on scroll
 
         // --- 2. TYPED.JS FOR ANIMATED TEXT ---
         const typedTextElement = document.getElementById("typed-text");
@@ -1186,7 +1304,6 @@
                 document.getElementById("navbarResponsive");
               if (navbarCollapse && navbarCollapse.classList.contains("show")) {
                 try {
-                  // Added try-catch for safety if bootstrap instance not found
                   const bsCollapse =
                     bootstrap.Collapse.getInstance(navbarCollapse);
                   if (bsCollapse) {
@@ -1224,7 +1341,6 @@
             threshold: 0.2,
           });
           progressBars.forEach((bar) => {
-            // style.width is set to 0% in HTML/CSS for initial state
             skillObserver.observe(bar);
           });
         }
@@ -1241,7 +1357,6 @@
           window.addEventListener("scroll", () => {
             if (window.pageYOffset > 300) {
               backToTopButton.style.display = "block";
-              // Force reflow before adding opacity for transition to work
               void backToTopButton.offsetWidth;
               backToTopButton.style.opacity = "1";
             } else {
@@ -1259,7 +1374,7 @@
           });
         }
 
-        // --- 7. GENERIC ANIMATE ON SCROLL (using Intersection Observer) ---
+        // --- 7. GENERIC ANIMATE ON SCROLL ---
         const elementsToAnimate =
           document.querySelectorAll(".animate-on-scroll");
         if (elementsToAnimate.length > 0) {
@@ -1334,6 +1449,71 @@
               event.preventDefault();
               event.stopPropagation();
             }
+            // Add Formspree submission handling if needed
+            // For now, let's assume basic client-side validation
+            // and then a manual submit success/error message display
+            // This part is more complex if you want to avoid page reload and handle AJAX
+            else if (contactForm.action.includes("formspree")) {
+              // Example Formspree AJAX handling (Optional, but better UX)
+              event.preventDefault(); // Prevent default only if doing AJAX
+              const formData = new FormData(contactForm);
+              fetch(contactForm.action, {
+                method: "POST",
+                body: formData,
+                headers: {
+                  Accept: "application/json",
+                },
+              })
+                .then((response) => {
+                  if (response.ok) {
+                    document
+                      .getElementById("submitSuccessMessage")
+                      .classList.remove("d-none");
+                    contactForm.reset(); // Clear the form
+                    setTimeout(() => {
+                      // Hide message after some time
+                      document
+                        .getElementById("submitSuccessMessage")
+                        .classList.add("d-none");
+                    }, 5000);
+                  } else {
+                    response.json().then((data) => {
+                      if (Object.hasOwn(data, "errors")) {
+                        // Handle specific Formspree errors if any
+                        document
+                          .getElementById("submitErrorMessage")
+                          .classList.remove("d-none");
+                        document.getElementById(
+                          "submitErrorMessage"
+                        ).children[0].textContent = data["errors"]
+                          .map((error) => error["message"])
+                          .join(", ");
+                      } else {
+                        document
+                          .getElementById("submitErrorMessage")
+                          .classList.remove("d-none");
+                      }
+                      setTimeout(() => {
+                        // Hide message after some time
+                        document
+                          .getElementById("submitErrorMessage")
+                          .classList.add("d-none");
+                      }, 5000);
+                    });
+                  }
+                })
+                .catch((error) => {
+                  document
+                    .getElementById("submitErrorMessage")
+                    .classList.remove("d-none");
+                  setTimeout(() => {
+                    // Hide message after some time
+                    document
+                      .getElementById("submitErrorMessage")
+                      .classList.add("d-none");
+                  }, 5000);
+                });
+            }
           });
 
           function isValidEmail(email) {
@@ -1374,7 +1554,6 @@
                   img.onerror = () => {
                     console.error("Could not load image: " + img.dataset.src);
                     img.classList.remove("lazy");
-                    // img.src = 'assets/images/image-load-error.png'; // Fallback
                   };
                   observer.unobserve(img);
                 }
@@ -1387,6 +1566,92 @@
             lazyImageObserver.observe(img);
           });
         }
+
+        // --- START: TINY PERMANENT BUBBLE EFFECT (Scrolls with Page) ---
+        const permanentBubbleColors = [
+          "rgba(26, 188, 156, 1)", // Teal
+          "rgba(52, 152, 219, 1)", // Peter River Blue
+          "rgba(155, 89, 182, 1)", // Amethyst Purple
+          "rgba(241, 196, 15, 1)", // Sunflower Yellow
+          "rgba(230, 126, 34, 1)", // Carrot Orange
+          "rgba(231, 76, 60, 1)", // Alizarin Crimson
+          "rgba(236, 240, 241, 0.9)", // Clouds White
+        ];
+
+        const permanentGlowColors = [
+          "rgba(26, 188, 156, 0.2)",
+          "rgba(52, 152, 219, 0.2)",
+          "rgba(155, 89, 182, 0.2)",
+          "rgba(241, 196, 15, 0.15)",
+          "rgba(230, 126, 34, 0.2)",
+          "rgba(231, 76, 60, 0.2)",
+          "rgba(236, 240, 241, 0.15)",
+        ];
+
+        const MAX_PERMANENT_BUBBLES = 200;
+        const permanentBubblesArray = [];
+
+        document.body.addEventListener("click", function (event) {
+          // Check if the click target is part of the navbar, or the back-to-top button, or a form input/button
+          // This is to prevent bubbles from appearing when interacting with UI controls.
+          if (
+            event.target.closest("#mainNav") ||
+            event.target.closest("#backToTopBtn") ||
+            event.target.tagName === "INPUT" ||
+            event.target.tagName === "TEXTAREA" ||
+            event.target.tagName === "BUTTON" ||
+            (event.target.tagName === "A" && event.target.closest(".btn"))
+          ) {
+            // also check for anchor styled as button
+            return; // Don't create bubble for these clicks
+          }
+
+          if (permanentBubblesArray.length >= MAX_PERMANENT_BUBBLES) {
+            const oldestBubble = permanentBubblesArray.shift();
+            if (oldestBubble) {
+              oldestBubble.remove();
+            }
+          }
+          createPermanentTinyBubble(event.pageX, event.pageY);
+        });
+
+        function createPermanentTinyBubble(docX, docY) {
+          const bubble = document.createElement("span");
+          bubble.className = "tiny-click-bubble";
+
+          const randomColorIndex = Math.floor(
+            Math.random() * permanentBubbleColors.length
+          );
+          const bubbleColor = permanentBubbleColors[randomColorIndex];
+          const glowColor = permanentGlowColors[randomColorIndex];
+
+          // Using 1px to 2.5px for better visibility while still being "tiny"
+          const finalDotSize = Math.random() * 1.5 + 1;
+
+          const animationDuration = (Math.random() * 0.3 + 0.4).toFixed(1); // Quick pop: 0.4s to 0.7s
+
+          bubble.style.width = `${finalDotSize}px`;
+          bubble.style.height = `${finalDotSize}px`;
+
+          // Apply a random offset from the click to spread them out a bit
+          const offsetX = (Math.random() - 0.5) * 8; // Random offset between -4px and +4px
+          const offsetY = (Math.random() - 0.5) * 8;
+
+          // Set left and top based on document coordinates.
+          // The CSS transform: translate(-50%, -50%) will center it.
+          bubble.style.left = docX + offsetX + "px";
+          bubble.style.top = docY + offsetY + "px";
+          bubble.style.backgroundColor = bubbleColor;
+          bubble.style.boxShadow = `0 0 1px ${glowColor}`; // Very minimal glow
+
+          bubble.style.animation = `tinyBubbleAppearAnimation ${animationDuration}s ease-out forwards`;
+
+          // Append to the <html> element to ensure it's positioned correctly for the whole document
+          document.documentElement.appendChild(bubble);
+
+          permanentBubblesArray.push(bubble);
+        }
+        // --- END: TINY PERMANENT BUBBLE EFFECT ---
       }); // End DOMContentLoaded
     </script>
   </body>
